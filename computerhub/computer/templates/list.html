@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block home %}
+
+<div class="container d-flex justify-content-center " style = "margin-top :20px;">
+  <div class="card" style="width: 80rem;">
+    <div class="card-body">
+      <h5 class="card-title">TreeLeafTask</h5>   
+
+
+      <div class="d-flex justify-content-center mb-3">
+        <a href="create"><button id="addButton" class="btn btn-primary">Create</button></a>
+    </div>
+    
+
+
+  <div class="table-container" style="max-height: 300px; overflow-y: auto;">
+    <table class="table" border = '1'>
+      <thead>
+        <tr>
+          <th scope="col" >S.N.</th>
+          <th scope="col" >Computer Code</th>
+          <th scope="col" >Computer</th>
+          <th scope="col" >Quantity</th>
+          <th scope="col" >Unit Rate</th>
+          <th scope="col" >Total Price</th>
+          <th scope="col" >Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Comouter code</td>
+          <td>Computer name</td>
+          <td>Quantity</td>
+          <td>Unit Rate</td>
+          <td>TotalPrice</td>
+          <td>Actions</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</div>
+</div>
+
+
+
+{% endblock  %}

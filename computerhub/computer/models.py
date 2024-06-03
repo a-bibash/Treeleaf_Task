@@ -37,5 +37,4 @@ class Computer(models.Model):
 
     
     def __str__(self) -> str:
-     
-     return self.computer_code
+        return self.computer_code
