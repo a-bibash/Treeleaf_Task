@@ -9,31 +9,37 @@
       <div class="card-body">
         <h5 class="card-title">Create Here</h5> 
         
-        <form>
-            <div class="mb-3" >
-                <label for="exampleFormControlSelect1">Computer code</label>
-                <input type="textfield" class="form-control" id="computercode">
-            </div>
+        <form method = 'POST'> 
+            {% csrf_token %} 
 
             <div class="mb-3" >
-                <label for="exampleFormControlSelect1">Computer</label>
-                <input type="textfield" class="form-control" id="computer">
+                <label for="exampleFormControlSelect1">Computer code</label>
+                <input type="textfield" class="form-control" name="computer_code">
+            </div>
+
+            <div class="mb-3">
+                    <label >Computer</label>
+                    <select class="form-control" name="computer">
+                        {%for data in computer%}
+                        <option value="{{ data.id }}">{{data.brand}}</option>
+                        {% endfor %}
+                    </select>
             </div>
             
             <div class="mb-3" >
                 <label for="exampleFormControlSelect1">Quantatiy </label>
-                <input type="textfield" class="form-control" id="quantatiy">
+                <input type="number" class="form-control" name="quantity" >
             </div>
 
             <div class="mb-3" >
                 <label for="exampleFormControlSelect1">Unit Rate </label>
-                <input type="textfield" class="form-control" id="unitrate">
+                <input type="number" class="form-control" name="unit_rate">
             </div>
 
-            <div class="mb-3" >
+        <!--<div class="mb-3" >
                 <label for="exampleFormControlSelect1">Total Price </label>
-                <input type="textfield" class="form-control" id="totalprice">
-            </div>
+                <input type="textfield" class="form-control" name="totalprice">
+            </div> -->
 
             <div class="d-flex justify-content-center mb-3">
                 <button class="btn btn-primary" type="submit" >ADD </button>

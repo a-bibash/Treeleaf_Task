@@ -28,15 +28,21 @@
         </tr>
       </thead>
       <tbody>
+        {%for data in list%}
         <tr>
-          <th scope="row">1</th>
-          <td>Comouter code</td>
-          <td>Computer name</td>
-          <td>Quantity</td>
-          <td>Unit Rate</td>
-          <td>TotalPrice</td>
-          <td>Actions</td>
+          <th scope="row">{{forloop.counter}}</th>
+          <td>{{data.computer_code}}</td>
+          <td>{{data.computer}}</td>
+          <td>{{data.quantity}}</td>
+          <td>{{data.unit_rate}}</td>
+          <td>{{data.total_price}}</td>
+          <td>
+            <a href="/delete/{{data.computer.id}}/" class="btn btn-danger" >Delete</a>
+            <a href="/update/{{ data.computer.id }}/?sn={{ forloop.counter }}" class="btn btn-danger">Update</a>
+
+          </td>
         </tr>
+        {%endfor%}
       </tbody>
     </table>
   </div>
