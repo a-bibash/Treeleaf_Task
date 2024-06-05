@@ -37,14 +37,15 @@
           <td>{{data.unit_rate}}</td>
           <td>{{data.total_price}}</td>
           <td>
-            <a href="/delete/{{data.computer.id}}/" class="btn btn-danger" >Delete</a>
-            <a href="/update/{{ data.computer.id }}/?sn={{ forloop.counter }}" class="btn btn-danger">Update</a>
-
+            <a href='/delete/{{data.id}}/' class="btn btn-danger" >Delete</a>
+            <a href='/update/{{data.id}}/' class="btn btn-danger">Update</a>
           </td>
         </tr>
         {%endfor%}
       </tbody>
     </table>
+
+
   </div>
 </div>
 
