@@ -4,6 +4,15 @@
 {% block home %}
 
 
+{%if messages%}
+<div class="alert alert-primary mt-2" role="alert">
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
+</div>
+{% endif %}
+
+
 <div class="container d-flex justify-content-center  align-items-center" style = "margin-top :20px;">
     <div class="card" style="width: 80rem;">
       <div class="card-body">
@@ -14,12 +23,12 @@
 
             <div class="mb-3" >
                 <label for="exampleFormControlSelect1">Computer code</label>
-                <input type="textfield" class="form-control" name="computer_code">
+                <input type="textfield" class="form-control" name="computer_code" required ="True">
             </div>
 
             <div class="mb-3">
                     <label >Computer</label>
-                    <select class="form-control" name="computer">
+                    <select class="form-control" name="computer" required ="True">
                         {%for data in computer%}
                         <option value="{{ data.id }}">{{data.brand}}</option>
                         {% endfor %}
@@ -28,18 +37,13 @@
             
             <div class="mb-3" >
                 <label for="exampleFormControlSelect1">Quantatiy </label>
-                <input type="number" class="form-control" name="quantity" >
+                <input type="number" class="form-control" name="quantity" required ="True">
             </div>
 
             <div class="mb-3" >
                 <label for="exampleFormControlSelect1">Unit Rate </label>
-                <input type="number" class="form-control" name="unit_rate">
+                <input type="number" class="form-control" name="unit_rate" required ="True">
             </div>
-
-        <!--<div class="mb-3" >
-                <label for="exampleFormControlSelect1">Total Price </label>
-                <input type="textfield" class="form-control" name="totalprice">
-            </div> -->
 
             <div class="d-flex justify-content-center mb-3">
                 <button class="btn btn-primary" type="submit" >ADD </button>

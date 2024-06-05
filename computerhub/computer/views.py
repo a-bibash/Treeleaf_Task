@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import *
 from django.views import View
+from django.contrib import messages
 # Create your views here.
     
 class List(View):
@@ -24,16 +25,20 @@ class Create(View):
         unit_rate =int(data.get("unit_rate"))
                 
         computer_name = ComputerSpecification.objects.get(brand=computer)
+        computer_cd = Computer.objects.filter(computer_code = computer_code)
         
-        Computer.objects.create(
-        computer_code = computer_code,
-        computer = computer_name,
-        quantity = quantity,
-        unit_rate =unit_rate,
-        )
-        return redirect('/')
-    
-
+        if computer_cd.exists():
+            messages.info(request, "Computer code already exists!!")
+            return redirect("/create/")
+        
+        else:
+            Computer.objects.create(
+            computer_code = computer_code,
+            computer = computer_name,
+            quantity = quantity,
+            unit_rate =unit_rate,
+            )
+            return redirect('/')
 
 class Update(View):
     def get(self,request,id):
@@ -50,14 +55,19 @@ class Update(View):
         
         computer_up= Computer.objects.get(id=id)        
         computer_name = ComputerSpecification.objects.get(brand=computer)
-
-        computer_up.computer_code = computer_code
-        computer_up.computer = computer_name
-        computer_up.quantity = quantity
-        computer_up.unit_rate = unit_rate
+        computer_cd = Computer.objects.filter(computer_code = computer_code)
         
-        computer_up.save()
+        if computer_cd.exists():
+            messages.info(request, "Computer code already exists!!")
+            return redirect(f"/update/{id}/")
             
+        else:
+            computer_up.computer_code = computer_code
+            computer_up.computer = computer_name
+            computer_up.quantity = quantity
+            computer_up.unit_rate = unit_rate
+            
+            computer_up.save()
         return redirect('/')
 
 
